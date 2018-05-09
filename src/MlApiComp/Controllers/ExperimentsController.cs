@@ -13,7 +13,7 @@ namespace MlApiComp.Controllers
         private static int counter;
 
         [HttpPost]
-        public IActionResult CreateExperiment(Experiment experiment)
+        public IActionResult CreateExperiment([FromBody]Experiment experiment)
         {
             experiment.Id = counter++;
 

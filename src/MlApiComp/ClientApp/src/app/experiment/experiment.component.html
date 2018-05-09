@@ -1,20 +1,20 @@
 <div>
-  <form id="create-form" action="api/experiments" method="post" (ngSubmit)="onSubmit()">
+  <form id="create-form" (ngSubmit)="onSubmit(this)">
     <div class="row">
       <label>Name:</label>
-      <input name="Name" type="text" />
+      <input name="Name" type="text" id="Name"/>
     </div>
     <div class="row">
       <label>Event date:</label>
-      <input name="EventDate" type="date" />
+      <input name="EventDate" type="date" id="Date"/>
     </div>
     <div class="row">
       <label>Executor name:</label>
-      <input name="ExecutorName" type="text" />
+      <input name="ExecutorName" type="text" id="ExecutorName"/>
     </div>
     <div class="row">
       <label>Cost:</label>
-      <input name="Cost" type="number" />
+      <input name="Cost" type="number" id="Cost"/>
     </div>
     <input class ="submit-btn" type="submit" value="Submit"/>
 

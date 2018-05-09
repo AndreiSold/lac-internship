@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule, MatCheckboxModule } from '@angular/material';
 import { ExperimentComponent } from './experiment/experiment.component';
+import { ExperimentService } from '../app/services/experiment.service'
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { ExperimentComponent } from './experiment/experiment.component';
       { path: '', component: HomeComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [],
+  providers: [
+    ExperimentService 
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
