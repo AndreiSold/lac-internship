@@ -9,5 +9,9 @@ namespace MlApiComp.Models
         public byte[] Content { get; set; }
 
         public string Name { get; set; }        
+
+        public string AzureApiResult { get; set; }
+
+        public string GoogleApiResult { get; set; }
     }
 }

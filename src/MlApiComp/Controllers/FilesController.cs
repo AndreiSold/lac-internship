@@ -12,9 +12,9 @@ namespace MlApiComp.Controllers
     [Route("api/[controller]")]
     public class FilesController : Controller
     {
-        
+
         private readonly MlContext dbContext;
-        
+
         public FilesController(MlContext dbContext)
         {
             this.dbContext = dbContext;
@@ -53,7 +53,31 @@ namespace MlApiComp.Controllers
                     return Ok(fileModel);
                 }
             }
-            
+
+        }
+
+        
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] File file)
+        {
+            if (file == null || file.Id != id)
+            {
+                return BadRequest();
+            }
+
+            var existingFile = dbContext.Files.Find(id);
+            if (existingFile == null)
+            {
+                return NotFound();
+            }
+
+            existingFile.AzureApiResult = file.AzureApiResult;
+            existingFile.GoogleApiResult = file.GoogleApiResult;
+            existingFile.Name = file.Name;
+
+            dbContext.Files.Update(existingFile);
+            dbContext.SaveChanges();
+            return NoContent();
         }
     }
 }

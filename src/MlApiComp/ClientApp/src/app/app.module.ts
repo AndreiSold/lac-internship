@@ -20,6 +20,7 @@ import { GoogleImageService } from './services/google-image.service';
 import { MlComponent } from './ml/ml.component'
 import { MlService } from './services/ml.service';
 import { MlDemoComponent } from './ml-demo/ml-demo.component';
+import { FileServiceService } from './services/file-service.service';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MlDemoComponent } from './ml-demo/ml-demo.component';
     AzureImageService,
     GoogleImageService,
     MlService,
+    FileServiceService,
   ],
   bootstrap: [AppComponent]
 })

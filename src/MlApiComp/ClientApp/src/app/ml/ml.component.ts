@@ -3,6 +3,7 @@ import { environment } from '../../environments/environment';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MlService } from '../services/ml.service';
+import { FileServiceService } from '../services/file-service.service';
 
 @Component({
   selector: 'app-ml',
@@ -16,7 +17,7 @@ export class MlComponent {
   azureApiResponse: string;
   file: Blob;
 
-  constructor(private mlservice: MlService) { }
+  constructor(private mlservice: MlService, private FileService: FileServiceService) { }
 
   onFileSelected(event) {
 
@@ -26,8 +27,22 @@ export class MlComponent {
       this.previewPath = e.target.result;
     }
 
+    this.saveFile(this.file);
+
     reader.readAsDataURL(this.file);
   }
+
+  saveFile(file) {
+    this.FileService.postFile(file)
+      .subscribe(data => {
+      this.file = data;
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  
+
 
   getImageInformation() {
     this.mlservice.predictGoogle(this.file)
