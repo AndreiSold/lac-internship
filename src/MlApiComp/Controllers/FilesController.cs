@@ -29,7 +29,7 @@ namespace MlApiComp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(IFormFile file)
+        public IActionResult Post(IFormFile file, [FromBody] String resultGoogle, [FromBody] String resultAzure)
         {
             if (file == null)
             {
@@ -46,6 +46,9 @@ namespace MlApiComp.Controllers
 
                     fileModel.Content = memoryStream.ToArray();
                     fileModel.Name = file.FileName;
+                    fileModel.AzureApiResult = "info from ml.component goes here AZURE";
+                    fileModel.GoogleApiResult = "info from ml.component goes here GOOGLE";
+                    
 
                     dbContext.Add(fileModel);
                     dbContext.SaveChanges();

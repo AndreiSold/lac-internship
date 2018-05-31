@@ -15,7 +15,7 @@ export class MlComponent {
   previewPath: string;
   googleApiResponse: string;
   azureApiResponse: string;
-  file: Blob;
+  file: File;
 
   constructor(private mlservice: MlService, private FileService: FileServiceService) { }
 
@@ -33,7 +33,7 @@ export class MlComponent {
   }
 
   saveFile(file) {
-    this.FileService.postFile(file)
+    this.FileService.postFile(file, this.googleApiResponse, this.azureApiResponse)
       .subscribe(data => {
       this.file = data;
     }, error => {
@@ -41,7 +41,13 @@ export class MlComponent {
     });
   }
 
-  
+  retrieveGoogleResponse() {
+    return this.googleApiResponse;
+  }
+
+  retrieveAzureResponse() {
+    return this.azureApiResponse;
+  }
 
 
   getImageInformation() {

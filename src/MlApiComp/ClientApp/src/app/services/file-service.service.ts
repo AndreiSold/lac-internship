@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 
@@ -11,9 +11,9 @@ export class FileServiceService {
 
   constructor(private httpClient: HttpClient) {
     this.baseUrl = 'http://localhost:49350/api/files';
-  }
+  }// 49350 / 52339
 
-  postFile(fileToUpload: File): Observable<any> {
+  postFile(fileToUpload: File, googleResult : String, azureResult : String): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
     return this.httpClient.post(this.baseUrl, formData).map((data) => {
